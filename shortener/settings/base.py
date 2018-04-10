@@ -96,4 +96,4 @@ USE_TZ = True
 public_root = root.path('public/')
 
 STATIC_ROOT = public_root('static')
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'

@@ -102,3 +102,6 @@ ENV/
 
 # script for setting environment variables in development
 local_env_vars/
+
+# static files
+/static

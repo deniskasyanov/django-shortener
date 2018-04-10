@@ -1,6 +1,6 @@
 import environ
 
-root = environ.Path(__file__) - 1
+root = environ.Path(__file__) - 3
 env = environ.Env(DEBUG=(bool, False),)
 BASE_DIR = root()
 
@@ -93,7 +93,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 
-public_root = root.path('public/')
+public_root = root.path('')
 
 STATIC_ROOT = public_root('static')
 STATIC_URL = '/static/'

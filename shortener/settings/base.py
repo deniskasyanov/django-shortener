@@ -7,6 +7,7 @@ BASE_DIR = root()
 DEBUG = env('DEBUG')
 SECRET_KEY = env('SECRET_KEY')
 
+ADMIN_URL_PATH = env('ADMIN_URL_PATH')
 
 ALLOWED_HOSTS = []
 

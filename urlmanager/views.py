@@ -15,7 +15,13 @@ class AddUrl(FormView):
     def form_valid(self, form):
         full_url = form.cleaned_data['full_url']
         obj, created = Url.objects.get_or_create(full_url=full_url)
-        return render(self.request, 'urlmanager/display_short_url.html', {'short_url': obj.get_short_url()})
+
+        scheme = self.request.scheme
+        host = self.request.META['HTTP_HOST']
+        short_url_path = obj.get_short_url()
+        short_url = f'{scheme}://{host}{short_url_path}'
+
+        return render(self.request, 'urlmanager/display_short_url.html', {'short_url': short_url})
 
 class ShortUrlRedirect(View):
 

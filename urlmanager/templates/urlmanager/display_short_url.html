@@ -5,7 +5,24 @@
         <h1 class="d-none d-md-block display-4 mt-5 mb-5">Here is your (probably not so) short link</h1>
         <h2 class="d-md-none mt-3 mb-3">Here is your (probably not so) short link</h1>
         <div class="input-group">
-            <input class="form-control" type="text" value="{{ short_url }}">
+            <input class="form-control" type="text" id="short_url" value="{{ short_url }}">
+            <div class="input-group-append">
+                <a id="copyButton" onclick="copyUrl()" class="btn btn-warning">Copy</a>
+            </div>
         </div>
     </form>
+
+    <script type="text/javascript">
+        function copyUrl() {
+            var shortUrlField = document.getElementById("short_url");
+            shortUrlField.focus();
+            shortUrlField.select();
+            document.execCommand("copy");
+
+            var copyButton = document.getElementById("copyButton");
+            copyButton.innerHTML="Copied!"
+            copyButton.classList.remove("btn-warning");
+            copyButton.classList.add("btn-success");
+        }
+    </script>
 {% endblock body %}

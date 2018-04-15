@@ -1,9 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
+{% extends "urlmanager/_base.html" %}
+
+{% block body %}
     <a href="{{ short_url }}">{{ short_url }}</a>
-</body>
-</html>
+{% endblock body %}

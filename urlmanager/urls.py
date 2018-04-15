@@ -1,9 +1,10 @@
-from django.conf import settings
-from django.conf.urls import url
-from django.contrib import admin
 from django.urls import path, include
 
+from .views import AddUrl
+
+
+app_name = 'urlmanager'
 
 urlpatterns = [
-    
+    path('', AddUrl.as_view(), name='add_url'),
 ]

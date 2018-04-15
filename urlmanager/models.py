@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.crypto import get_random_string
 
 class Url(models.Model):
     # There seems to be no performance difference between TextField
@@ -18,8 +19,21 @@ class Url(models.Model):
     # Rate limiting of access using short url can further increase privacy.
     short_url_path = models.CharField(max_length=7)
 
+    def __str__(self):
+        return self.full_url
+
     def get_short_url(self):
         return f'/{self.short_url_path}/'
 
     def get_full_url(self):
         return self.full_url
+
+    def save(self, *args, **kwargs):
+        short_url_path = get_random_string(length=7)
+        # Extremely unlikely but make sure no object with the same short url exists in db
+        if Url.objects.filter(short_url_path=short_url_path).exists():
+            self.save(*args, **kwargs)
+        else:
+            if not self.short_url_path:
+                self.short_url_path = short_url_path
+            super(Url, self).save(*args, **kwargs)

@@ -2,7 +2,14 @@
 
 {% block body %}
     <form method="POST">{% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Submit</button>
+        <h1 class="display-4 mt-5 mb-5">Django Shortener Demo</h1>
+        <div class="input-group">
+            {% for field in form %}
+                {{ field }}
+            {% endfor %}
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-warning">Shorten</button>
+            </div>
+        </div>
     </form>
 {% endblock body %}

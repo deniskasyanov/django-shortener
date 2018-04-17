@@ -39,6 +39,9 @@ Environment variables can be set up in web interface (Project Setting -> Config 
 ```bash
 heroku config:set <ENVIRONMENT_VARIABLE>=<VALUE>
 ```
+
+There are convenience utility scripts in `local_env_vars/` for setting and unsetting environment variables in local environment. You need to change at least `DATABASE_URL` with your DB config, everything else should work even with default values. Run `. local_env_vars/set.sh` from project root to set up variables and `. local_env_vars/unset.sh` to unset them.
+
 ## Areas for improvement
 
 * Static files are served with Python
